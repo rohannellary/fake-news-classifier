@@ -1,82 +1,92 @@
-\# Fake News Detection — BERT × XGBoost Hybrid Classifier
+# 📰 Fake News Detection — BERT + XGBoost Hybrid Classifier
 
+A production-style NLP pipeline that combines contextual embeddings from BERT with XGBoost for high-performance fake news classification on large-scale datasets.
 
+---
 
-A two-stage NLP pipeline combining BERT embeddings with XGBoost 
+## 🚀 Overview
 
-for fake news classification, trained on 100,000+ articles.
+This project implements a two-stage hybrid architecture:
 
+1. **BERT** for deep contextual text understanding  
+2. **XGBoost** for efficient and robust classification  
 
+The approach leverages the strengths of both deep learning and traditional machine learning to improve accuracy and reduce false predictions.
 
-\## Results
+---
 
-\- 92% accuracy on held-out test set
+## 📊 Results
 
-\- Outperformed single-model baselines by 6pp on macro-F1
+- **92% accuracy** on held-out test set  
+- **+6 percentage points improvement** over single-model baselines (macro F1)  
+- **14% reduction in false negatives** compared to frozen embedding baseline  
 
-\- Fine-tuning reduced false-negative rate by 14% vs frozen-embedding baseline
+---
 
+## 🧠 Architecture
 
+```
+Raw Text
+   ↓
+BERT Tokenization + Embeddings
+   ↓
+Feature Extraction
+   ↓
+XGBoost Classifier
+   ↓
+Prediction (Fake / Real)
+```
 
-\## Tech Stack
+---
 
-Python · HuggingFace Transformers (BERT) · XGBoost · scikit-learn
+## 🛠 Tech Stack
 
+- Python  
+- HuggingFace Transformers (BERT)  
+- XGBoost  
+- scikit-learn  
+- FastAPI (for inference API)
 
+---
 
-\## Project Structure
+## ⚙️ How to Run
 
-\- api\_code.py            → FastAPI endpoint for real-time predictions
-
-\- bert\_preprocessing.py  → Text cleaning and BERT tokenisation
-
-\- bert\_training.py       → BERT fine-tuning and embedding extraction
-
-\- xgboost\_preprocessing.py → Feature preparation for XGBoost
-
-\- xgboost\_training.py    → XGBoost classifier training and evaluation
-
-
-
-\## How to Run
-
+### 1. Install dependencies
+```bash
 pip install -r requirements.txt
+```
 
+### 2. Preprocess data for BERT
+```bash
+python src/bert_preprocessing.py
+```
 
+### 3. Train BERT and extract embeddings
+```bash
+python src/bert_training.py
+```
 
-\# Step 1 - Preprocess data for BERT
+### 4. Prepare features for XGBoost
+```bash
+python src/xgb_preprocessing.py
+```
 
-python bert\_preprocessing.py
+### 5. Train XGBoost classifier
+```bash
+python src/xgb_training.py
+```
 
+### 6. Run API for inference
+```bash
+python src/api.py
+```
 
+---
 
-\# Step 2 - Train BERT and extract embeddings
+## 📦 Dataset
 
-python bert\_training.py
+- ~30,000 training samples  
+- ~70,000 test samples  
+- Aggregated from multiple news sources for diversity and robustness  
 
-
-
-\# Step 3 - Preprocess for XGBoost
-
-python xgboost\_preprocessing.py
-
-
-
-\# Step 4 - Train XGBoost classifier
-
-python xgboost\_training.py
-
-
-
-\# Step 5 - Run the API
-
-python api\_code.py
-
-
-
-\## Dataset
-
-Trained on 30,000+ training samples and 70,000+ test articles 
-
-across diverse news sources.
-
+---
