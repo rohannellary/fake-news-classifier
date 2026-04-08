@@ -49,6 +49,27 @@ Prediction (Fake / Real)
 
 ---
 
+## 📁 Project Structure
+
+```
+app/
+  main.py        # FastAPI application (API endpoints)
+  llm.py         # LLM classification logic
+  router.py      # Rule-based routing engine
+  schemas.py     # Request/response models
+  config.py      # Configuration and environment variables
+
+tests/
+  test_routing.py
+
+evaluation.py    # Accuracy evaluation script
+requirements.txt
+README.md
+.gitignore
+```
+
+---
+
 ## ⚙️ How to Run
 
 ### 1. Install dependencies
@@ -88,5 +109,15 @@ python src/api.py
 - ~30,000 training samples  
 - ~70,000 test samples  
 - Aggregated from multiple news sources for diversity and robustness  
+
+---
+
+## 🔥 Key Features
+
+- Real-time ticket classification using LLMs  
+- Structured output parsing with fallback handling  
+- Deterministic rule-based routing for reliability  
+- Retry logic and logging for robustness  
+- Modular and extensible architecture  
 
 ---
